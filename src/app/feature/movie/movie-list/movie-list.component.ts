@@ -8,6 +8,7 @@ import { MovieService } from 'src/app/service/movie.service';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
+  title: string = "Movie-List";
   // movies will hold our list of movies from the back end
   // will be one way bound on our html to provide a table view of movies
   movies: Movie[] = [];
