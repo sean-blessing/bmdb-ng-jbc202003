@@ -29,6 +29,15 @@ export class MovieDetailComponent implements OnInit {
   }
 
   delete() {
+    this.movieSvc.delete(this.movieId).subscribe(jr => {
+      if (jr.errors==null) {
+        console.log(jr.data);
+        this.router.navigateByUrl("/movie/list");
+      }
+      else {
+        console.log("*** Error deleting movie!",this.movieId,jr.errors);
+      }
+    });
     
   }
 
