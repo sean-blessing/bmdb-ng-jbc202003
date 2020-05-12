@@ -19,8 +19,12 @@
             <td>{{ movie.title }}</td>
             <td>{{ movie.year }}</td>
             <td>
-                <a routerLink='/movie/detail/{{movie.id}}'>D</a> | 
-                <a routerLink='/movie/edit/{{movie.id}}'>E</a>
+                <a routerLink='/movie/detail/{{movie.id}}'>
+                    <img width='20' height='20' src='assets/details.png' title='Movie Details'>
+                </a> | 
+                <a routerLink='/movie/edit/{{movie.id}}'>
+                    <img width='20' height='20' src='assets/pencil-icon.png' title='Edit Movie'>
+                </a>
             </td>
         </tr>
     </tbody>
