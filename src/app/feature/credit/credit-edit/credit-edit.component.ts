@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./credit-edit.component.css']
 })
 export class CreditEditComponent implements OnInit {
-  title: string = "Credit-Create";
+  title: string = "Credit-Edit";
   actors: Actor[] = [];
   movies: Movie[] = [];
   credit: Credit = new Credit();
@@ -28,9 +28,19 @@ export class CreditEditComponent implements OnInit {
   ngOnInit(): void {
     // get the credit id from the url
     this.route.params.subscribe(parms => this.creditId = parms['id']);
+    // get the credit for the id passed in url
     this.creditSvc.get(this.creditId).subscribe(jr => {
       this.credit = jr.data as Credit;
     });
+    // populate the list of actors
+    this.actorSvc.list().subscribe(jr => {
+      this.actors = jr.data as Actor[];
+    });
+    // populate the list of movies
+    this.movieSvc.list().subscribe(jr => {
+      this.movies = jr.data as Movie[];
+    });
+
   }
 
   save() {
@@ -43,6 +53,14 @@ export class CreditEditComponent implements OnInit {
         alert("Error editing Credit.  Try Again.");
       }
     });
+  }
+
+  compMovie(a: Movie, b: Movie): boolean {
+    return a && b && a.id === b.id;
+  }
+
+  compActor(a: Actor, b: Actor): boolean {
+    return a && b && a.id === b.id;
   }
 
 }
