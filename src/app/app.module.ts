@@ -14,6 +14,7 @@ import { MovieEditComponent } from './feature/movie/movie-edit/movie-edit.compon
 import { CreditCreateComponent } from './feature/credit/credit-create/credit-create.component';
 import { CreditDetailComponent } from './feature/credit/credit-detail/credit-detail.component';
 import { CreditEditComponent } from './feature/credit/credit-edit/credit-edit.component';
+import { MenuComponent } from './core/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreditEditComponent } from './feature/credit/credit-edit/credit-edit.co
     MovieEditComponent,
     CreditCreateComponent,
     CreditDetailComponent,
-    CreditEditComponent
+    CreditEditComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
