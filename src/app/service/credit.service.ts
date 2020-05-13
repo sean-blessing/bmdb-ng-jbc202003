@@ -35,4 +35,11 @@ export class CreditService {
     return this.http.delete(url+id) as Observable<JsonResponse>;
   }
 
+  getAllMoviesForActor(id: number): Observable<JsonResponse> {
+    return this.http.get(url+"/filmography/"+id) as Observable<JsonResponse>;
+  }
+
+  getAllActorsForMovie(id: number): Observable<JsonResponse> {
+    return this.http.get(url+"/credits/"+id) as Observable<JsonResponse>;
+  }
 }
