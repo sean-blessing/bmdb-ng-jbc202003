@@ -19,6 +19,4 @@ export class SortPipe implements PipeTransform {
         if(x < y) return 1; else return -1;
     }
   }
-
-
 }

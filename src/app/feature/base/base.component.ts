@@ -17,6 +17,4 @@ export class BaseComponent implements OnInit {
     }
     this.sortCriteria = column;
   }
-
-
 }
