@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/model/movie.class';
 import { MovieService } from 'src/app/service/movie.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { BaseComponent } from '../../base/base.component';
 
 @Component({
   selector: 'app-movie-edit',
   templateUrl: '../movie-maint-shared/movie-maint.component.html',
   styleUrls: ['./movie-edit.component.css']
 })
-export class MovieEditComponent implements OnInit {
+export class MovieEditComponent extends BaseComponent implements OnInit {
   title: string = "Movie-Edit";
   submitBtnTitle: string = "Edit";
   movie: Movie = new Movie();
@@ -16,7 +18,10 @@ export class MovieEditComponent implements OnInit {
 
   constructor(private movieSvc: MovieService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              protected location: Location) { 
+                super(location);
+              }
 
   ngOnInit(): void {
     this.route.params.subscribe(parms => this.movieId = parms["id"]);

@@ -5,6 +5,7 @@ import { MovieService } from 'src/app/service/movie.service';
 import { CreditService } from 'src/app/service/credit.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from '../../base/base.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-movie-credit',
@@ -20,8 +21,9 @@ export class MovieCreditComponent extends BaseComponent implements OnInit {
   constructor(private movieSvc: MovieService,
     private creditSvc: CreditService,
     private route: ActivatedRoute,
-    private router: Router) {
-    super();
+    private router: Router,
+    protected location: Location) {
+    super(location);
   }
 
   ngOnInit(): void {

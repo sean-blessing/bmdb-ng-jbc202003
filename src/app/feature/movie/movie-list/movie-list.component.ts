@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/model/movie.class';
 import { MovieService } from 'src/app/service/movie.service';
 import { BaseComponent } from '../../base/base.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-movie-list',
@@ -14,8 +15,9 @@ export class MovieListComponent extends BaseComponent implements OnInit {
   // will be one way bound on our html to provide a table view of movies
   movies: Movie[] = [];
 
-  constructor(private movieSvc: MovieService) {
-    super();
+  constructor(private movieSvc: MovieService,
+    protected location: Location) {
+    super(location);
   }
 
   ngOnInit(): void {

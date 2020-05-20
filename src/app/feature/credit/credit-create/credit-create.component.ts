@@ -6,13 +6,15 @@ import { ActorService } from 'src/app/service/actor.service';
 import { MovieService } from 'src/app/service/movie.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Credit } from 'src/app/model/credit.class';
+import { BaseComponent } from '../../base/base.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-credit-create',
   templateUrl: './credit-create.component.html',
   styleUrls: ['./credit-create.component.css']
 })
-export class CreditCreateComponent implements OnInit {
+export class CreditCreateComponent extends BaseComponent implements OnInit {
   title: string = "Credit-Create";
   actors: Actor[] = [];
   movies: Movie[] = [];
@@ -24,7 +26,10 @@ export class CreditCreateComponent implements OnInit {
               private actorSvc: ActorService,
               private movieSvc: MovieService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              protected location: Location) { 
+                super(location);
+               }
 
   ngOnInit(): void {
     this.route.params.subscribe(parms => this.movieId = parms["movieId"]);

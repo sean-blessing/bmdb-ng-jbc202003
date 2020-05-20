@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Credit } from 'src/app/model/credit.class';
-import { MovieService } from 'src/app/service/movie.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Movie } from 'src/app/model/movie.class';
 import { CreditService } from 'src/app/service/credit.service';
+import { Location } from '@angular/common';
+import { BaseComponent } from '../../base/base.component';
 
 @Component({
   selector: 'app-credit-detail',
   templateUrl: './credit-detail.component.html',
   styleUrls: ['./credit-detail.component.css']
 })
-export class CreditDetailComponent implements OnInit {
+export class CreditDetailComponent extends BaseComponent implements OnInit {
   title: string = 'Credit-Detail';
   credit: Credit;
   id: number;
 
   constructor(private creditSvc: CreditService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              protected location: Location) {
+                super(location);
+               }
 
   ngOnInit() {
     // get the credit id from the url

@@ -4,13 +4,15 @@ import { MovieService } from 'src/app/service/movie.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Credit } from 'src/app/model/credit.class';
 import { CreditService } from 'src/app/service/credit.service';
+import { Location } from '@angular/common';
+import { BaseComponent } from '../../base/base.component';
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css']
 })
-export class MovieDetailComponent implements OnInit {
+export class MovieDetailComponent extends BaseComponent implements OnInit {
   movie: Movie = new Movie();
   title: string = 'Movie-Detail';
   movieId: number = 0;
@@ -19,7 +21,10 @@ export class MovieDetailComponent implements OnInit {
   constructor(private movieSvc: MovieService,
               private creditSvc: CreditService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              protected location: Location) {
+                super(location);
+               }
 
   ngOnInit(): void {
     // get the id from the route

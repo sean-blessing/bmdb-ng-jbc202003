@@ -6,13 +6,15 @@ import { CreditService } from 'src/app/service/credit.service';
 import { ActorService } from 'src/app/service/actor.service';
 import { MovieService } from 'src/app/service/movie.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { BaseComponent } from '../../base/base.component';
 
 @Component({
   selector: 'app-credit-edit',
   templateUrl: './credit-edit.component.html',
   styleUrls: ['./credit-edit.component.css']
 })
-export class CreditEditComponent implements OnInit {
+export class CreditEditComponent extends BaseComponent implements OnInit {
   title: string = "Credit-Edit";
   actors: Actor[] = [];
   movies: Movie[] = [];
@@ -23,7 +25,10 @@ export class CreditEditComponent implements OnInit {
     private actorSvc: ActorService,
     private movieSvc: MovieService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    protected location: Location) { 
+      super(location);
+    }
 
   ngOnInit(): void {
     // get the credit id from the url

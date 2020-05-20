@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   template: ''
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class BaseComponent implements OnInit {
   sortCriteria: string = "id";
   sortOrder: string = "asc";
-  constructor() { }
+  constructor(protected location: Location) { }
 
   ngOnInit(): void {
   }
@@ -16,5 +17,9 @@ export class BaseComponent implements OnInit {
       this.sortOrder = (this.sortOrder == "desc") ? "asc" : "desc";
     }
     this.sortCriteria = column;
+  }
+
+  backClicked() {
+    this.location.back();
   }
 }
