@@ -18,6 +18,7 @@ import { MenuComponent } from './core/menu/menu.component';
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 import { BaseComponent } from './feature/base/base.component';
 import { SortPipe } from './pipe/sort.pipe';
+import { MovieCreditComponent } from './feature/movie/movie-credit/movie-credit.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SortPipe } from './pipe/sort.pipe';
     MenuComponent,
     UserLoginComponent,
     BaseComponent,
-    SortPipe
+    SortPipe,
+    MovieCreditComponent
   ],
   imports: [
     BrowserModule,

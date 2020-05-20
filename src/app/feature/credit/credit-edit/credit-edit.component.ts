@@ -46,7 +46,7 @@ export class CreditEditComponent implements OnInit {
   save() {
     this.creditSvc.edit(this.credit).subscribe(jr => {
       if (jr.errors==null) {
-        this.router.navigateByUrl("/credit/list");
+        this.router.navigateByUrl("/movie/credits/"+this.credit.movie.id);
       }
       else {
         console.log("*** Error editing credit:  ",this.credit,jr.errors);

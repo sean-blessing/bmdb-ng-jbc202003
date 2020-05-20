@@ -5,19 +5,15 @@
     </section>
     <main class="single">
         <table class="table table-sm">
+            <tr *ngIf="movie">
+                <td>Movie:</td>
+                <td><input [(ngModel)]="movie.title" class="rounded" type="text" disabled></td>
+            </tr>
             <tr>
                 <td>Actor:</td>
                 <td>
                     <select [(ngModel)]="credit.actor" class="rounded">
                         <option *ngFor="let actor of actors" [ngValue]='actor'>{{actor.lastName+", "+actor.firstName}}</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Movie:</td>
-                <td>
-                    <select [(ngModel)]="credit.movie" class="rounded">
-                        <option *ngFor="let movie of movies" [ngValue]='movie'>{{movie.title}}</option>
                     </select>
                 </td>
             </tr>

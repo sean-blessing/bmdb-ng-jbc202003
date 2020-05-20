@@ -1,0 +1,41 @@
+<div *ngIf="movie">
+<section class="heading">
+    <span class="page-title font-weight-bold font-italic">[{{title}}]</span>
+    <span> | <a routerLink="/movie/list">Return to List</a></span> 
+</section>
+<table class="table">
+    <tr>
+        <td class="form-group w-25">Movie:</td>
+        <td class="form-group w-75"><input value="{{movie.title + '('+movie.rating+', '+ movie.year+')'}}" class="rounded form-group w-50" type="text" disabled></td>
+    </tr>
+</table>
+<section class="heading">
+    <span class="page-title font-weight-bold font-italic">Credits</span>
+    <a routerLink='/credit/create/{{movie.id}}'>
+        <img width='20' height='20' src='assets/add-icon.png' title='Add New'>
+    </a>
+</section>
+<table *ngIf="credits" class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th>Actor</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="!credits || credits.length==0"><td colspan="3">No Credits Defined. Add some!</td></tr>
+        <tr *ngFor="let credit of credits">
+            <td>{{ credit.actor.firstName +' ' +credit.actor.lastName }}</td>
+            <td>{{ credit.role }}</td>
+            <td>
+                <a routerLink='/credit/edit/{{credit.id}}'>
+                    <img width='20' height='20' src='assets/pencil-icon.png' title='Edit Movie'>
+                </a> | 
+                <button (click)="delete(credit.id)" class="btn btn-sm btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
